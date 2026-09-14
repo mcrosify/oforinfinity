@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO OPTIMIZATION START -->
+    <title>O For Infinity | Web Design & SEO in Duluth, Lawrenceville & Buford, GA</title>
+    <meta name="description" content="O For Infinity provides premium web design and SEO services for small businesses in Duluth, Lawrenceville, and Buford, GA. Increase reach and capture leads today.">
+    <meta name="keywords" content="Web Design, SEO, Small Business, Duluth GA, Lawrenceville GA, Buford GA, Digital Agency, Gwinnett County">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oforinfinity.com/">
+    <meta property="og:title" content="O For Infinity | Web Design & SEO in GA">
+    <meta property="og:description" content="Premium digital experiences that grow small businesses in Duluth, Lawrenceville, and Buford.">
+    <meta property="og:image" content="https://placehold.co/1200x630/000000/ffffff?text=O+For+Infinity">
+    
+    <!-- SCHEMA MARKUP (JSON-LD) for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "O For Infinity",
+      "image": "Logo.png",
+      "description": "Premium web design and SEO services for small businesses in Duluth, Lawrenceville, and Buford, GA.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Duluth",
+        "addressRegion": "GA",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Duluth"
+        },
+        {
+          "@type": "City",
+          "name": "Lawrenceville"
+        },
+        {
+          "@type": "City",
+          "name": "Buford"
+        }
+      ],
+      "priceRange": "$$"
+    }
+    </script>
+    <!-- SEO OPTIMIZATION END -->
+
+    <!-- Google Fonts: Inter for that clean, premium look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config for Apple-esque styling -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#000000',
+                        surface: '#111111',
+                        'surface-highlight': '#1c1c1e',
+                        text: '#f5f5f7',
+                        'text-muted': '#86868b',
+                        accent: '#ff3b30', // Apple Red
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Reset & Aesthetics */
+        body {
+            background-color: #000000;
+            color: #f5f5f7;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        /* Text Gradients */
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #86868b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #ff3b30 0%, #ff9500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(28, 28, 30, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Subtle glow behind elements */
+        .glow-bg {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 59, 48, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(60px);
+        }
+
+        /* Input styling */
+        .input-apple {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .input-apple:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #2997ff;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="selection:bg-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-panel border-b-0 border-transparent py-4" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <!-- Logo Image: Expects Logo.png in the root directory -->
+                <img src="Logo.png" alt="O For Infinity Web Design Agency" class="h-10 w-auto object-contain opacity-90 transition-opacity hover:opacity-100" onerror="this.onerror=null; this.src='https://placehold.co/140x40/white/transparent?text=O+For+Infinity';">
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-text-muted">
+                <a href="#philosophy" class="hover:text-white transition-colors">Philosophy</a>
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#local" class="hover:text-white transition-colors">Local</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+            <a href="#contact" class="px-5 py-2 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors">
+                Get Started
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden px-6 pt-20">
+        <!-- Ambient Glow -->
+        <div class="glow-bg top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse-slow"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto space-y-8">
+            <div class="reveal">
+                <!-- H1 optimized slightly for visual impact while context carries SEO weight -->
+                <h1 class="text-6xl md:text-8xl font-semibold tracking-tighter leading-[1.1] mb-6">
+                    <span class="text-gradient">Design that</span><br>
+                    <span class="text-gradient-blue">Resonates.</span>
+                </h1>
+            </div>
+            
+            <div class="reveal delay-100">
+                <!-- Explicit keyword rich description -->
+                <p class="text-xl md:text-2xl text-text-muted font-light max-w-2xl mx-auto leading-relaxed">
+                    Premium <strong class="text-white font-normal">web design</strong> and <strong class="text-white font-normal">SEO</strong> for forward-thinking small businesses in Duluth, Lawrenceville, and Buford, GA.
+                </p>
+            </div>
+
+            <div class="reveal delay-200 pt-8 flex flex-col md:flex-row gap-4 justify-center items-center">
+                <a href="#contact" class="group relative inline-flex items-center gap-2 px-8 py-4 bg-white text-black rounded-full font-medium transition-transform hover:scale-105">
+                    Start Project
+                    <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                </a>
+                <span class="text-text-muted text-sm">Scroll to explore</span>
+            </div>
+        </div>
+
+        <!-- Floating Elements Abstract -->
+        <div class="absolute bottom-20 left-10 md:left-20 animate-float opacity-30 hidden md:block">
+            <div class="glass-panel p-4 rounded-2xl w-48">
+                <div class="flex gap-2 mb-2">
+                    <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                </div>
+                <div class="h-2 w-3/4 bg-white/10 rounded mb-2"></div>
+                <div class="h-2 w-1/2 bg-white/10 rounded"></div>
+            </div>
+        </div>
+
+        <div class="absolute top-32 right-10 md:right-20 animate-float opacity-30 hidden md:block" style="animation-delay: 2s;">
+            <div class="glass-panel p-4 rounded-2xl w-40 flex items-center justify-center">
+               <span class="text-4xl font-bold text-white/20">SEO</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Philosophy / Value Prop -->
+    <section id="philosophy" class="py-32 px-6 relative bg-surface-highlight/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
+                        Websites that display Confidence<br>
+                        <span class="text-text-muted">for Maximum Impact.</span>
+                    </h2>
+                    <p class="text-lg text-text-muted leading-relaxed mb-6">
+                        We don't believe in noise. We believe in clarity. In a digital world screaming for attention, the brands that whisper with confidence are the ones that are heard.
+                    </p>
+                    <p class="text-lg text-text-muted leading-relaxed">
+                        O For Infinity creates websites that act as the silent engine of your growth—capturing leads, enhancing SEO, and providing a seamless user experience.
+                    </p>
+                </div>
+                <div class="relative h-[400px] w-full glass-panel rounded-3xl overflow-hidden reveal">
+                     <div class="absolute inset-0 bg-gradient-to-br from-red-900/20 to-orange-900/20"></div>
+                     <!-- Abstract representation of Analytics/Growth -->
+                     <div class="absolute bottom-0 left-0 right-0 h-1/2 flex items-end justify-around px-8 pb-8 gap-4">
+                         <div class="w-full bg-accent/20 h-[40%] rounded-t-lg backdrop-blur-md animate-pulse"></div>
+                         <div class="w-full bg-accent/40 h-[60%] rounded-t-lg backdrop-blur-md animate-pulse" style="animation-delay: 0.2s"></div>
+                         <div class="w-full bg-accent/60 h-[80%] rounded-t-lg backdrop-blur-md animate-pulse" style="animation-delay: 0.4s"></div>
+                         <div class="w-full bg-accent h-[100%] rounded-t-lg shadow-[0_0_30px_rgba(255,59,48,0.5)]"></div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid (Bento Box Style) -->
+    <section id="services" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 reveal text-center md:text-left">
+                <h2 class="text-3xl md:text-5xl font-semibold tracking-tight">Capabilities</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[600px]">
+                
+                <!-- SEO Block - Large -->
+                <div class="md:col-span-2 glass-panel rounded-3xl p-8 pb-10 md:p-12 md:pb-16 relative overflow-hidden group hover:border-accent/30 transition-colors reveal">
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <i data-lucide="search" class="w-10 h-10 mb-6 text-white"></i>
+                            <h3 class="text-2xl font-semibold mb-2">Search Engine Optimization</h3>
+                            <p class="text-text-muted max-w-md">We structure your digital presence so the right people find you in Duluth and surrounding areas. Technical SEO, local schema, and content strategy designed for the algorithms of tomorrow.</p>
+                        </div>
+                        <div class="mt-8">
+                            <span class="text-sm font-medium text-accent tracking-wide uppercase">Visibility Protocol</span>
+                        </div>
+                    </div>
+                    <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-accent/5 to-transparent pointer-events-none"></div>
+                </div>
+
+                <!-- Web Design Block -->
+                <div class="glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden group hover:border-accent/30 transition-colors reveal delay-100">
+                    <i data-lucide="monitor" class="w-10 h-10 mb-6 text-white"></i>
+                    <h3 class="text-2xl font-semibold mb-2">Web Design</h3>
+                    <p class="text-text-muted">Clean, responsive, and performance-obsessed interfaces built for small businesses.</p>
+                </div>
+
+                <!-- Lead Gen Block -->
+                <div class="glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden group hover:border-accent/30 transition-colors reveal delay-100">
+                    <i data-lucide="users" class="w-10 h-10 mb-6 text-white"></i>
+                    <h3 class="text-2xl font-semibold mb-2">Lead Capture</h3>
+                    <p class="text-text-muted">Efficient CTAs and engagement sections to turn visitors into revenue.</p>
+                </div>
+
+                <!-- Local Growth Block -->
+                <div class="md:col-span-2 glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden group hover:border-accent/30 transition-colors reveal">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div>
+                            <i data-lucide="trending-up" class="w-10 h-10 mb-6 text-white"></i>
+                            <h3 class="text-2xl font-semibold mb-2">Sustainable Growth</h3>
+                            <p class="text-text-muted">Systems built to scale with your business over time.</p>
+                        </div>
+                        <!-- Decorative chart line -->
+                        <svg class="w-full md:w-1/2 h-24 stroke-accent" fill="none" viewBox="0 0 200 60">
+                            <path d="M0 50 C 40 50, 60 40, 80 30 S 140 20, 200 5" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Focus Section -->
+    <section id="local" class="py-32 px-6 relative overflow-hidden">
+        <div class="glow-bg bottom-0 right-0 translate-y-1/2 opacity-30"></div>
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <span class="px-4 py-1 rounded-full border border-white/10 text-xs font-medium uppercase tracking-wider text-text-muted mb-6 inline-block">Local Expertise</span>
+            <h2 class="text-4xl md:text-6xl font-semibold tracking-tighter mb-8">
+                From Duluth to Buford.
+            </h2>
+            <p class="text-xl text-text-muted mb-12 max-w-2xl mx-auto">
+                We aren't a faceless global agency. We are grounded in Gwinnett. We understand the Lawrenceville market, the Duluth aesthetic, and the Buford pace of business.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="px-6 py-3 rounded-2xl bg-surface border border-white/5 text-sm text-gray-300">Duluth, GA</span>
+                <span class="px-6 py-3 rounded-2xl bg-surface border border-white/5 text-sm text-gray-300">Lawrenceville, GA</span>
+                <span class="px-6 py-3 rounded-2xl bg-surface border border-white/5 text-sm text-gray-300">Buford, GA</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 bg-surface-highlight/5">
+        <div class="max-w-xl mx-auto">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl font-semibold mb-4">Start the Conversation</h2>
+                <p class="text-text-muted">Tell us about your goals. We'll handle the tech.</p>
+            </div>
+
+            <form 
+                id="contact-form" 
+                name="contact" 
+                method="POST" 
+                data-netlify="true" 
+                data-netlify-honeypot="bot-field" 
+                class="space-y-6 reveal delay-100"
+            >
+                <!-- Netlify hidden form token & honeypot spam protection -->
+                <input type="hidden" name="form-name" value="contact">
+                <p class="hidden">
+                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="contact-name" class="text-xs font-medium text-text-muted uppercase tracking-wide">
+                            Name <span class="text-accent" aria-hidden="true">*</span>
+                        </label>
+                        <input 
+                            id="contact-name" 
+                            name="name" 
+                            type="text" 
+                            required 
+                            aria-required="true"
+                            autocomplete="name" 
+                            class="w-full p-4 rounded-xl input-apple" 
+                            placeholder="John Doe"
+                        >
+                    </div>
+                    <div class="space-y-2">
+                        <label for="contact-business" class="text-xs font-medium text-text-muted uppercase tracking-wide">Business</label>
+                        <input 
+                            id="contact-business" 
+                            name="business" 
+                            type="text" 
+                            autocomplete="organization" 
+                            class="w-full p-4 rounded-xl input-apple" 
+                            placeholder="Company Inc."
+                        >
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label for="contact-email" class="text-xs font-medium text-text-muted uppercase tracking-wide">
+                        Email <span class="text-accent" aria-hidden="true">*</span>
+                    </label>
+                    <input 
+                        id="contact-email" 
+                        name="email" 
+                        type="email" 
+                        required 
+                        aria-required="true"
+                        autocomplete="email" 
+                        class="w-full p-4 rounded-xl input-apple" 
+                        placeholder="john@example.com"
+                    >
+                </div>
+                <div class="space-y-2">
+                    <label for="contact-message" class="text-xs font-medium text-text-muted uppercase tracking-wide">
+                        Message <span class="text-accent" aria-hidden="true">*</span>
+                    </label>
+                    <textarea 
+                        id="contact-message" 
+                        name="message" 
+                        required 
+                        aria-required="true"
+                        class="w-full p-4 rounded-xl input-apple h-32 resize-none" 
+                        placeholder="How can we help you grow?"
+                    ></textarea>
+                </div>
+
+                <!-- Live Status / Feedback Area -->
+                <div id="form-status" class="hidden text-sm p-4 rounded-xl text-center"></div>
+
+                <button 
+                    id="submit-btn" 
+                    type="submit" 
+                    class="w-full bg-white text-black font-medium py-4 rounded-xl hover:bg-gray-200 transition-colors flex justify-center items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    <span id="submit-text">Send Message</span>
+                    <i data-lucide="send" id="submit-icon" class="w-4 h-4"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10 text-center md:text-left">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                 <!-- Footer Logo -->
+                <img src="Logo.png" alt="O For Infinity Web Design" class="h-6 w-auto object-contain opacity-80" onerror="this.onerror=null; this.src='https://placehold.co/100x24/white/transparent?text=O+For+Infinity';">
+                <span class="text-sm font-medium text-text-muted ml-2">&copy; <span id="copyright-year">2026</span></span>
+            </div>
+            <div class="flex gap-6 text-sm text-text-muted">
+                <a href="Legal.html#privacy" class="hover:text-white transition-colors py-2 min-h-[44px] flex items-center">Privacy</a>
+                <a href="Legal.html#terms" class="hover:text-white transition-colors py-2 min-h-[44px] flex items-center">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Dynamic copyright year
+        const yearEl = document.getElementById('copyright-year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // Scroll Reveal Animation Logic
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar blur effect on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('glass-panel');
+                nav.classList.remove('border-transparent');
+                nav.classList.add('border-white/10');
+            } else {
+                nav.classList.remove('glass-panel');
+                nav.classList.add('border-transparent');
+                nav.classList.remove('border-white/10');
+            }
+        });
+
+        // Netlify Forms AJAX handler with accessible inline feedback
+        const contactForm = document.getElementById('contact-form');
+        const formStatus = document.getElementById('form-status');
+        const submitBtn = document.getElementById('submit-btn');
+        const submitText = document.getElementById('submit-text');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                submitBtn.disabled = true;
+                submitText.textContent = 'Sending...';
+                formStatus.className = 'hidden';
+
+                const formData = new FormData(contactForm);
+
+                try {
+                    const response = await fetch('/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: new URLSearchParams(formData).toString()
+                    });
+
+                    if (response.ok) {
+                        formStatus.textContent = 'Thank you! Your message has been received. We will reach out shortly.';
+                        formStatus.className = 'text-green-400 bg-green-950/40 border border-green-800/50 p-4 rounded-xl text-center text-sm';
+                        contactForm.reset();
+                        submitText.textContent = 'Message Sent ✓';
+                    } else {
+                        throw new Error('Server responded with status ' + response.status);
+                    }
+                } catch (error) {
+                    formStatus.textContent = 'Unable to send message. Please email hello@oforinfinity.com directly.';
+                    formStatus.className = 'text-red-400 bg-red-950/40 border border-red-800/50 p-4 rounded-xl text-center text-sm';
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Retry Sending';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
