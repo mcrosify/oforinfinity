@@ -363,6 +363,7 @@
                 method="POST" 
                 data-netlify="true" 
                 data-netlify-honeypot="bot-field" 
+                data-netlify-recaptcha="true"
                 class="space-y-6 reveal delay-100"
             >
                 <!-- Netlify hidden form token & honeypot spam protection -->
@@ -427,6 +428,9 @@
                         placeholder="How can we help you grow?"
                     ></textarea>
                 </div>
+
+                <!-- Netlify reCAPTCHA Container -->
+                <div data-netlify-recaptcha="true" class="my-2 flex justify-center"></div>
 
                 <!-- Live Status / Feedback Area -->
                 <div id="form-status" class="hidden text-sm p-4 rounded-xl text-center"></div>
@@ -500,18 +504,37 @@
             }
         });
 
-        // Netlify Forms AJAX handler with accessible inline feedback
+        // Anti-Bot Security Shield & Netlify Forms AJAX handler
         const contactForm = document.getElementById('contact-form');
         const formStatus = document.getElementById('form-status');
         const submitBtn = document.getElementById('submit-btn');
         const submitText = document.getElementById('submit-text');
+        const formLoadTime = Date.now();
 
         if (contactForm) {
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
+                // Shield 1: Time threshold check (bots submit in < 2 seconds)
+                const elapsedSeconds = (Date.now() - formLoadTime) / 1000;
+                if (elapsedSeconds < 2.0) {
+                    formStatus.textContent = 'Please take a moment before submitting.';
+                    formStatus.className = 'text-yellow-400 bg-yellow-950/40 border border-yellow-800/50 p-4 rounded-xl text-center text-sm';
+                    return;
+                }
+
+                // Shield 2: Language & Foreign spam character filter (Cyrillic bot blasts)
+                const nameVal = document.getElementById('contact-name')?.value || '';
+                const msgVal = document.getElementById('contact-message')?.value || '';
+                const foreignBotPattern = /[\u0400-\u04FF]/; // Cyrillic regex
+                if (foreignBotPattern.test(nameVal) || foreignBotPattern.test(msgVal)) {
+                    formStatus.textContent = 'Submission declined: Standard Latin characters required.';
+                    formStatus.className = 'text-red-400 bg-red-950/40 border border-red-800/50 p-4 rounded-xl text-center text-sm';
+                    return;
+                }
+
                 submitBtn.disabled = true;
-                submitText.textContent = 'Sending...';
+                submitText.textContent = 'Verifying & Sending...';
                 formStatus.className = 'hidden';
 
                 const formData = new FormData(contactForm);
@@ -528,11 +551,12 @@
                         formStatus.className = 'text-green-400 bg-green-950/40 border border-green-800/50 p-4 rounded-xl text-center text-sm';
                         contactForm.reset();
                         submitText.textContent = 'Message Sent ✓';
+                        if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
                     } else {
                         throw new Error('Server responded with status ' + response.status);
                     }
                 } catch (error) {
-                    formStatus.textContent = 'Unable to send message. Please email hello@oforinfinity.com directly.';
+                    formStatus.textContent = 'Verification or network error. Please ensure the CAPTCHA is checked, or email hello@oforinfinity.com directly.';
                     formStatus.className = 'text-red-400 bg-red-950/40 border border-red-800/50 p-4 rounded-xl text-center text-sm';
                     submitBtn.disabled = false;
                     submitText.textContent = 'Retry Sending';
